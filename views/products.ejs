@@ -3,42 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/productview.css" />
     <script src="/bootstrap.js" defer></script>
-    <title><%= title %></title>
+    <title><%= product.name %></title>
   </head>
   <body>
     <%- include("partials/navbar") %>
     <div class="container">
-      <div class="main-content">
-        <h1>products</h1>
+      <div class="product-content">
+        <a href="/products" class="btn btn-custom btn-sm">
+          << Return to Products
+        </a>
 
-        <div class="sidebar-products">
-          <%- include("partials/sidebar") %>
-          <div class="products-container">
-            <% products.forEach((product) => { %>
-            <div class="product-card">
-              <img
-                src="<%= product.src %>"
-                class="product-img"
-                alt="..."
-                width="80px"
-              />
-
-              <div class="card-info">
-                <div class="name-price">
-                  <p class="card-name"><%= product.name %></p>
-                  <p class="card-price">$<%= product.price %></p>
-                </div>
-                <p class="card-brand">Brand: <%= product.brand %></p>
-                <p class="card-brand">Quantity: <%= product.quantity %></p>
-
-                <span class="badge rounded-pill text-bg-<%=product.category%>"
-                  ><%= product.category %></span
-                >
-              </div>
+        <div class="view-product-container">
+          <div class="view-image">
+            <img
+              src="<%= product.src %>"
+              class="view-product-img"
+              alt="<%= product.name %>"
+            />
+          </div>
+          <div class="view-info">
+            <div class="name-category">
+              <h1><%= product.name %></h1>
+              <h3 class="product-category text-bg-<%=product.category%>">
+                <%= product.category %>
+              </h3>
             </div>
-            <% }) %>
+
+            $<%=product.price%> <%=product.brand%> <%=product.category%>
+            <%=product.quantity%>
           </div>
         </div>
       </div>
