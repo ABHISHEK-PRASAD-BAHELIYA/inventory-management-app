@@ -10,7 +10,38 @@
   <body>
     <%- include("partials/navbar") %>
     <div class="container">
-      <div class="main-content"><h1>welcome</h1></div>
+      <div class="main-content">
+        <h1>products</h1>
+
+        <div class="sidebar-products">
+          <%- include("partials/sidebar") %>
+          <div class="products-container">
+            <% products.forEach((product) => { %>
+            <div class="product-card">
+              <img
+                src="<%= product.src %>"
+                class="product-img"
+                alt="..."
+                width="80px"
+              />
+
+              <div class="card-info">
+                <div class="name-price">
+                  <p class="card-name"><%= product.name %></p>
+                  <p class="card-price">$<%= product.price %></p>
+                </div>
+                <p class="card-brand">Brand: <%= product.brand %></p>
+                <p class="card-brand">Quantity: <%= product.quantity %></p>
+
+                <span class="badge rounded-pill text-bg-<%=product.category%>"
+                  ><%= product.category %></span
+                >
+              </div>
+            </div>
+            <% }) %>
+          </div>
+        </div>
+      </div>
     </div>
     <%- include('partials/footer') %>
   </body>
