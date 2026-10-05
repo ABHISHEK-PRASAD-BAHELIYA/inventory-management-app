@@ -1,8 +1,11 @@
-const express = require("express");
-const router = express.Router();
+db = require("../db/queries");
 
-router.route("/").get((req, res) => {
-  res.render("categories", { title: "Frootie Categories" });
-});
+async function getAllCategories(req, res) {
+  const listedCategories = await db.getUniqueCategories();
 
-module.exports = router;
+  res.render("categories", { title: "Frootie Categories", listedCategories });
+}
+
+module.exports = {
+  getAllCategories,
+};
